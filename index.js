@@ -739,7 +739,7 @@ server.post("/login",function(req,res){
                         ocupatie: rez.rows[0].ocupatie,
                         email:rez.rows[0].email,
                         rol:rez.rows[0].rol,
-                        imagine:existsImage?rez.rows[0].cale_imagine.replace("uploads\\",""):"default.png"
+                        imagine:null
                     }
                 }
             }
