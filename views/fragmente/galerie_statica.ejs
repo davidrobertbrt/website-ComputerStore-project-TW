@@ -1,0 +1,11 @@
+<div class="container-galerie-static">
+    <%for(let img of locals.galerieStatic){%>
+    <figure class="container-picture">
+        <picture>
+            <source media="(min-width:650px)" srcset = "/imagini/<%-img.big%>">
+            <img src="/imagini/<%-img.small%>">
+        </picture>
+        <figcaption><%-img.descriere%></figcaption>
+    </figure>
+    <%}%>
+</div>

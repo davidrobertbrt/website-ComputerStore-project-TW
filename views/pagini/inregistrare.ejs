@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <%-include("../fragmente/head")%>
+        <!-- <script type="text/javascript" src="/js/validareInregistrare.js"></script> -->
+        <link rel="stylesheet" href="css/inregistrare.css">
+    </head>
+    <body>
+        <%-include("../fragmente/header")%>
+        <main class="page-content">
+        <section class="container-page">
+            <h3>Înregistrare website</h3>
+            <p>Realizând un cont pe acest site, sunteți de acord cu "Politica de confidențialitate" / "Termeni și condiții"</p>
+        </section>
+        <section class="container-form">
+            <form id="form_inreg" method="post" class="date form-design box" action="/register-user" enctype="multipart/form-data">
+                <label for="username">Username</label>
+                <input type="text" name="username" id="in-username">
+                <label for="nume">Nume</label>
+                <input type="text" name="nume" id="in-nume">
+                <label for="prenume">Prenume</label>
+                <input type="text" name="prenume" id="in-prenume">
+                <label for="parola">Parola</label>
+                <input type="password" name="parola" id="in-parola">
+                <label for="confirm-parola">Confirmare parola</label>
+                <input type="password" name="confirm-parola" id="in-confirm-parola">
+                <label for="email">E-mail</label>
+                <input type="text" name="email" id="in-email">
+                <label for="culoare-chat">Culoarea chat-ului </label>
+                <select name="culoare-chat" id="in-culoare_chat">
+                    <option value="black"selected>Negru</option>
+                    <option value="blue">Albastru</option>
+                    <option value="orange">Portocaliu</option>
+                    <option value="rosu">Rosu</option>
+                    <option value="green">Verde</option>
+                </select>   
+
+                <label for="ocupatie">Ocupația dvs.</label>
+                <select name="ocupatie" id="in-ocupatie">
+                    <option value="nespecificat" selected>Nu doresc sa spun</option>
+                    <%for(const ocupatie of locals.ocupatiiUser){%>
+                    <%if(ocupatie!="nespecificat"){%>
+                        <option value="<%-ocupatie%>"><%-ocupatie%></option>
+                    <%}}%>
+                </select>
+
+                <label for="poza-profil">Poza de profil</label>
+                <input type="file" name="poza-profil" id="in-poza-profil">
+
+                <input type="submit">
+            </form>
+        </section>
+        </main>
+        <%-include("../fragmente/footer")%>
+    </body>
+</html>

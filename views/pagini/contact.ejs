@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <%-include("../fragmente/head")%>
+    <link rel="stylesheet" href="/css/contact.css">
+</head>
+<body>
+    <%-include("../fragmente/header")%>
+    <section class="main-content">
+        <div>
+            <h2>Introduce un mesaj!</h2>
+            <form id="form_contact" method="post" class="date form-design box" action="/send-contact">
+                <textarea name="mesaj" cols="30" rows="5" placeholder="Introduce mesaj!"></textarea>
+                <input type="submit">
+            </form>
+        </div>
+
+        <div>
+            <h2>Ultimele mesaje</h2>
+            <div class="container-mesaje">
+                <% if (locals.mesaje) {
+					var mesajeSort=locals.mesaje.sort(function(a,b) {return (new Date(b.attributes.data)).getTime()-(new Date(a.attributes.data)).getTime()})
+					for (let msg of mesajeSort) { 
+						let dt=new Date(msg.attributes.data);
+						%>
+						<article class="mesaj-c">
+							<h3><span class="username"><%= msg.attributes.username%></span> spune:</h3>
+                            <%if(msg.attributes.rol === "admin"){%>
+							    <p style="color:red;"><%= msg.elements[0].text %></p>
+                            <%}else{%>
+                                <p><%=msg.elements[0].text%></p>
+                            <%}%>
+							<p><small><time datetime="<%= dt.getUTCDate() %>"><%= dt.toLocaleString('ro-RO', {
+														weekday: 'long', 
+														day: 'numeric',
+														year: 'numeric', 
+														month: 'long', 
+														hour: 'numeric',
+														minute: 'numeric', 
+														second: 'numeric',
+													}) %></time></small>
+							</p>
+						</article>
+					<% } %>
+				<% } %>
+            </div>
+        </div>
+
+    </section>
+    <%-include("../fragmente/footer")%>
+</body>

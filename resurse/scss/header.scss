@@ -1,0 +1,299 @@
+@import "util";
+
+@mixin animatieSubMenu{
+    animation-name: animatie_dropdown;
+    animation-iteration-count: 1;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+    transform-origin: 50% 0;
+
+      @keyframes animatie_dropdown {
+        0% {
+          opacity: 0;
+          transform: scaleY(0);
+        }
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }   
+      }
+}
+
+@mixin animatieOutText{
+    text-shadow:0.0625rem -7vh 0.125rem;
+    transition: text-shadow 0.7s;
+}
+
+@mixin animatieInText{
+    text-shadow:0.0625rem 0.0625rem 0.125rem;
+    transition:text-shadow 0.7s;
+}
+
+@mixin resetTextAnimation{
+    text-shadow:none;
+    transition:none;
+}
+
+@mixin highlightBoxMenu{
+    background-color:$color4;
+    color:$color1;
+    transition:1s background-color;
+}
+
+
+
+h1.inline-sigla{
+    display:block;
+    padding-left:0.5rem;
+    padding-right:0.5rem;
+    color:$color4;
+    i{
+        margin-right:0.5rem;
+        --fa-animation-duration: 15s; --fa-animation-iteration-count: 5;--fa-animation-timing: ease-in-out;
+    }
+}
+
+header{
+    display:grid;
+    grid-gap:0.5rem;
+}
+
+
+div.container-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    border-radius:0.5rem;
+    background-color:$color2;
+}
+
+nav{
+    #veggie{
+        display:none;
+      }
+    
+      #mobileMenu{
+        display:none;
+      }
+}
+
+
+ul.container-meniu{
+    display:flex;
+    list-style:none;
+    align-content:space-around;
+    color:$color4;
+    i{
+        margin-right:0.3125rem;
+    }
+
+    >li{
+        padding-left:0.8rem;
+        padding-right:0.8rem;
+        //margin-right:0.5rem;
+        @include animatieOutText;
+        a{
+            text-decoration:none;
+            cursor:pointer;
+            color:inherit;
+        }
+
+        button#btn-toggleTheme{
+            background-color: transparent;
+            color:inherit;
+            display: inline-block;
+            border:none;
+            width: 100%;
+        }
+
+        >ul{
+            display:none;
+            list-style:none;
+            padding-left:0;
+        }
+
+        &:hover{
+            text-decoration:underline;
+            position:relative;
+            @include highlightBoxMenu();
+            
+
+            >a{
+                @include animatieInText();
+            }
+
+            >ul{
+                position:absolute;
+                left:0;
+                display:flex;
+                flex-direction:column;
+                width:max-content;
+                background-color:$color2;
+                border:1px solid $color2;
+                box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+                border-radius:0.5rem;
+
+                @include animatieSubMenu;
+
+                >li{
+                    padding:0.5rem;
+                    @include resetTextAnimation();
+                    &:hover{
+                        @include highlightBoxMenu();
+                        text-decoration:underline;
+                    }
+                }
+            }
+
+        }
+        
+    }
+}
+
+
+@media only screen and (max-width:720px)
+{
+
+    div.container-header{
+        display:flex;
+        justify-content:flex-start;
+        border-radius:0.5rem;
+        background-color:$color2;
+    }
+
+    h1.inline-sigla{
+        display:none;
+    }
+
+    ul.container-meniu{
+        display:none;
+    }
+
+    nav.container-nav{
+        position:relative;
+        label#veggie{
+            display:inline-block;
+            margin:1rem;
+            cursor:pointer;
+        }
+
+        input[type=checkbox]#mobileMenu
+        {
+            display:inline;
+            opacity:0;
+        }
+    }
+
+    
+    input#mobileMenu[type=checkbox]:checked{
+        +ul.container-meniu{
+            position:absolute;
+            display:flex;
+            flex-direction:column;
+            z-index:1;
+            background-color:$color2;
+            padding:0;
+            width:98vw;
+            top:3.125rem;
+            border-radius:0.5rem;
+            height:fit-content;
+            text-align:center;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            >li{
+                position:relative;
+                text-shadow:none;
+                padding:0.5rem;
+
+                span.hidden-link
+                {
+                    display:none;
+                }
+
+                &:hover{
+                    >ul{
+                        position:absolute;
+                        display:flex;
+                        flex-direction:column;
+                        left:0;
+                        z-index:2;
+                        width:98vw;
+                        border-radius:0.5rem;
+                        height:fit-content;
+                        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+                        text-align:center;
+                        >li{
+                            position:relative;
+                            padding:0.5rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+
+
+div.container-login{
+    display:flex;
+    flex-direction:column;
+    background-color:$color2;
+    padding:0.5rem;
+    border-radius:0.5rem;
+    color:$color4;
+
+    input{
+        display:block;
+    }
+
+    label{
+        display:inline-block;
+    }
+
+    input[type=submit]
+    {
+        margin:0.5rem;
+        background-color:$color5;
+        border:none;
+        color:$color1;
+        padding:0.5rem 2rem;
+        text-align:center;
+        text-decoration:none;
+        display:block;
+        font-size:1rem;
+        cursor:pointer;
+    }
+}
+
+
+div.container-connected{
+    display:flex;
+    flex-direction:row;
+    background-color:$color2;
+    padding:0.5rem;
+    border-radius:0.5rem;
+    color:$color4;
+    img{
+        width:8rem;
+        height:auto;
+    }
+
+    >div-container-connected-left{
+        width:100%;
+    }
+
+    >div.container-connected-right{
+        padding-left:0.5rem;
+        width:100%;
+        p{
+            display:inline-block;
+        }
+    }
+
+
+
+
+
+}

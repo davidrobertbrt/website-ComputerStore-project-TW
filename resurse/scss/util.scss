@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Radio+Canada:wght@300;400;500;600;700&display=swap');
+
+///color palette by adobe generator
+$color1:#d4f0fc;
+$color2:#89d6fb;
+$color3:#02a9f7;
+$color4:#02577a;
+$color5:#01303f;
+
+html{
+    scroll-behavior:smooth;
+}
+
+
+body{
+    height:100vh;
+    font-family:'Radio Canada';
+    margin:0.5rem;
+    box-sizing:border-box;
+    background-color: $color1;
+    font-size-adjust:0.55;
+}
+
+.dark{
+    background-color:#333333;
+    color:$color1;
+}
+
+.active{
+    background-color:$color1;
+}
+
+hr{
+    height:2px;
+    border-top:5px solid transparent;
+    border-bottom:5px solid transparent;
+    border-right:25px solid $color4;
+    border-left:25px solid $color4;
+    background-clip:content-box; ///vrem sa nu se duca background-ul peste borders
+    background-color:$color4;
+}

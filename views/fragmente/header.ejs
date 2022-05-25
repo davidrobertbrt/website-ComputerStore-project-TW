@@ -1,0 +1,54 @@
+<a id="refTop"></a>
+<a class ="goTop" href="#refTop" title="Mergi la început"><div class = "triunghi"></div></a>
+<header>
+    <div class="container-header">
+            <h1 class="inline-sigla"><i class="fa-solid fa-computer fa-shake"></i>PixelPro</h1>
+            <nav class="container-nav">
+                <label id="veggie" for="mobileMenu"><i class="fa-solid fa-bars fa-2x"></i></label>
+                <input id="mobileMenu" type="checkbox">
+                <ul class="container-meniu">
+                    <li class="container-link <%= locals.page && locals.page == '/index' ? 'active':''%>"><a href="/index"><i class="fa-solid fa-house"></i><span class="hidden-link">Acasă</span></a></li>
+                    <li class="container-link <%= locals.page && locals.page== '/produse' ? 'active':''%>">
+                        <a href="/produse">Produse</a>
+                        <ul class="container-submenu">
+                            <%for(let optiune of locals.categoriiProduse){%>
+                            <li><a href="/produse?tip=<%-optiune%>"><%-optiune%></a></li>
+                            <%}%>
+                        </ul>
+                    </li>
+                    <li class="container-link <%= locals.page && locals.page== '/galerie' ? 'active':''%>"><a href="/galerie">Galerie</a></li>
+                    <li class="container-link <%= locals.page && locals.page== '/cos' ? 'active':''%>"><a href="/cos">Coș</a></li>
+                    <li class="container-link <%= locals.page && locals.page== '/contact' ? 'active':''%>"><a href="/contact">Contact</a></li>
+                    <li class="container-link"><button id="btn-toggleTheme"><i class="fa-solid fa-sun"></i></button></li>
+                </ul>
+            </nav>
+        </div>
+    <div class="container-login">
+        <% if(!locals.utilizatorCr){%>
+        <div class="container-login">
+            <form id="form_login" method="post" class="date" action="/login" enctype="multipart/form-data">
+                <label>Username <input type="text" id="in-username" name="username"></label>
+                <label>Parola <input type="password" id="in-parola" name="parola"></label>
+                <label><input type="submit"></label>
+            </form>
+            <span>Nu deții cont? <a href="/inregistrare">Înregistrează-te</a></span>
+        </div>
+        <%}else{%>
+        <div class="container-connected">
+            <div class="container-connected-left">
+                <img src = "<%-locals.utilizatorCr.imagine%>">
+            </div>
+            <div class="container-connected-right">
+                <p>Bun venit,<%-`${locals.utilizatorCr.nume} ${locals.utilizatorCr.prenume}`%></p>
+                <ul>
+                    <li><a href="/logout">Deconectare</a></li>
+                    <li><a href="/profil">Profilul tău</a></li>
+                    <%if(locals.utilizatorCr.rol === "admin"){%>
+                        <li><a href="/admin/manageUsers">Administrează utilizatori</a></li>
+                    <%}%>
+                </ul>
+            </div>
+        <%}%>
+        </div>
+    </div>
+</header>

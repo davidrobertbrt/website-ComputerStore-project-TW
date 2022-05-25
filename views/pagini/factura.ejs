@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Factură - PixelPro Computers</title>
+    <style>
+        body{
+            counter-reset:cnt;
+        }
+        #tabl{
+            border-collapse:collapse;
+        }
+        tr{
+            counter-increment:cnt;
+        }
+        #tabl td, #tabl th{
+            border:1px solid black;
+        }
+        p{color:red; font-weight:bold; text-decoration:underline;};
+        #tabl::after{
+            content:"Numar produse" counter(cnt);
+            display:block;
+        }
+    </style>
+</head>
+<body>
+    <h1>Factură - PixelPro Computers</h1>
+    <p>Stimate <%-locals.utilizator.nume%>, aveți aici lista de produse achizitionate.</p>
+    <table id="tabl">
+        <thead>
+            <tr>
+                <th>Produs</th>
+                <th>Pret</th>
+                <th>Cantitate</th>
+                <th>Categorie</th>
+                <th>Stare</th>
+                <th>Producator</th>
+                <th>Gaming</th>
+                <th>QR</th>
+            </tr>
+        </thead>
+        <tbody>
+            <%
+                var suma = 0;
+                for(let prod of locals.produse){
+                    var cantCrProd = locals.selectList.get(prod.id);
+                    suma += cantCrProd * parseFloat(prod.pret);
+            %>
+            <tr>
+                <td><%-prod.nume%></td>
+                <td><%-prod.pret%></td>
+                <td><%-cantCrProd%></td>
+                <td><%-prod.categorie%></td>
+                <td><%-prod.stare%></td>
+                <td><%-prod.producator_produs%></td>
+                <td><%-prod.gaming%></td>
+                <td><img src="<%-locals.protocol%><%-locals.domeniu%>/imagini/qrcode/<%-prod.id%>.png"></td>
+            </tr>
+
+            <%}%>
+            <tfoot>
+                <td colspan="8">Pret: <%-suma%></td>
+            </tfoot>       
+        
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,175 @@
+@use "header.scss";
+@use "footer.scss";
+@import "util";
+
+main{
+    margin-top:0.5rem;
+}
+
+
+section.container-filtrare{
+    background-color: $color4;
+    color:$color1;
+    margin: auto auto;
+    padding:0.5rem;
+    width:70%;
+
+    border-radius:0.5rem;
+}
+
+
+
+div.subcontainer-filtrare-1{
+    grid-area:fil1;
+}
+
+div.subcontainer-filtrare-2{
+    grid-area:fil2;
+}
+
+div.subcontainer-filtrare-3{
+    grid-area:fil3;
+}
+
+div.subcontainer-filtrare-4{
+    grid-area:fil4;
+}
+
+div.subcontainer-filtrare-5{
+    grid-area:fil5;
+}
+
+div.subcontainer-filtrare-6{
+    grid-area:fil6;
+}
+
+
+div.subcontainer-filtrare-7{
+    grid-area:fil7;
+}
+
+// div.subcontainer-filtrare-8{
+//     grid-area:fil8;
+// }
+
+div.subcontainer-filtrare-8{
+    button{
+        margin:0.5rem;
+        background-color:$color5;
+        border:none;
+        color:inherit;
+        padding:0.9rem 2rem;
+        text-align:center;
+        text-decoration:none;
+        display:inline-block;
+        font-size:1rem;
+        cursor:pointer;
+    }
+}
+
+div.subcontainer-filtrare
+{
+    display:grid;
+    justify-content:left;
+    grid-template-areas:"fil5 fil4"
+                        "fil6 fil4"
+                        "fil7 fil2"
+                        "fil7 fil1"
+                        "fil3 fil3";
+
+
+    label{
+        display:block;
+    }
+    input{
+        display:inline;
+    }
+    div{
+        margin:0.5rem;
+    }
+
+
+}
+
+
+section#produse{
+    grid-gap:1rem;
+    display:grid;
+    margin-top:0.5rem;
+    margin-bottom:0.5rem;
+    grid-template-columns:repeat(2,1fr);
+
+    @media only screen and(max-width:1550px)
+    {
+        display:flex;
+        flex-direction:column;
+
+    }
+
+}
+
+
+article.produs{
+    background-color:$color4;
+    color:$color1;
+    border-radius:1.2rem;
+    >div.container-produs-middle
+    {
+        display:flex;
+    }
+
+
+    >div{
+        padding:1rem;
+
+        table{
+            border-collapse:collapse;
+            margin-bottom:1rem;
+            display: block;
+            overflow-x: auto;
+            white-space: nowrap;
+
+            overflow:scroll;
+            td,th{
+                border:1px solid $color1;
+                height:fit-content;
+                padding:8px;
+            }
+
+            tr:nth-child(even)
+            {
+                background-color:$color3;
+            }
+
+            tr:hover{
+                background-color:$color2;
+                color:black;
+            }
+
+
+        }
+    }
+
+    img{
+        border:5px solid $color3;
+        margin-left:auto;
+        margin-right:0.5rem;
+        margin-top:0.5rem;
+        margin-bottom:0.5rem;
+        display:block;
+        max-width:150px;
+        height:auto;
+    }
+
+    a{
+        text-decoration:none;
+        color:inherit;
+    }
+
+    span.val-taguri,span.val-stare,span.val-producator{
+        text-transform:uppercase;
+    }
+
+
+}
+

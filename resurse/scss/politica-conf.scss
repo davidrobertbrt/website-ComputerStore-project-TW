@@ -1,0 +1,21 @@
+@use "header.scss";
+@use "footer.scss";
+@import "util";
+
+section.main-content{
+    margin:0.5rem;
+    background-color:$color4;
+    color:$color1;
+    padding:0.2rem;
+    border-radius:0.5rem;
+    >h2{
+        text-align:center;
+        i{
+            margin-right:1rem;
+        }
+    }
+
+    h3,p{
+        padding-left:0.5rem;
+    }
+}

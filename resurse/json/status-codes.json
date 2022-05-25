@@ -1,0 +1,40 @@
+{
+    "cale_baza":"/imagini/erori",
+    "default":{
+        "titlu":"Eroare necunoscută",
+        "text":"A apărut o eroare.",
+        "imagine":"interzis.png"
+    },
+    "erori":[
+        {
+            "identificator":404,
+            "status":true,
+            "titlu":"404 - Not found",
+            "text": "Din păcate, pagina respectivă nu a fost găsită. Cred că e timpul de un nou....router? 🤪",
+            "imagine":"interzis.png"
+        },
+        {
+            "identificator":403,
+            "status":true,
+            "titlu":"403 - Forbidden",
+            "text": "Hm....detectiv? Ce cauți tu aici? Du-te acasă!",
+            "imagine":"lupa.png"
+        },
+        
+        {
+            "identificator":1,
+            "status":false,
+            "titlu":"Mentenanță site",
+            "text": "Veniți mai târziu!",
+            "imagine":"interzis.png"
+        },
+        
+        {
+            "identificator":2,
+            "status":false,
+            "titlu":"Eroare baza date",
+            "text": "Revenim cât de curând putem!",
+            "imagine":"interzis.png"
+        }
+    ]
+}

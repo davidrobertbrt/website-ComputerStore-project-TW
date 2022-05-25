@@ -1,0 +1,201 @@
+@import url("https://fonts.googleapis.com/css2?family=Radio+Canada:wght@300;400;500;600;700&display=swap");
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  height: 100vh;
+  font-family: "Radio Canada";
+  margin: 0.5rem;
+  box-sizing: border-box;
+  background-color: #d4f0fc;
+  font-size-adjust: 0.55;
+}
+
+.dark {
+  background-color: #333333;
+  color: #d4f0fc;
+}
+
+.active {
+  background-color: #d4f0fc;
+}
+
+hr {
+  height: 2px;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-right: 25px solid #02577a;
+  border-left: 25px solid #02577a;
+  background-clip: content-box;
+  background-color: #02577a;
+}
+
+div.container-galerie-static {
+  display: grid;
+  grid-template-rows: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: stretch;
+  margin: 2rem;
+  gap: 2rem;
+}
+div.container-galerie-static img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+div.container-galerie-static figure {
+  background-size: contain;
+}
+div.container-galerie-static figure picture :hover {
+  transition: all 1s;
+  transition-property: transform, border, rotate;
+  transform: scale(1.25);
+  rotate: -10deg;
+  border: 4px solid #01303f;
+}
+div.container-galerie-static figure picture :not(:hover) {
+  transition: all 0.2s;
+  transition-property: transform, border, rotate;
+  rotate: 0deg;
+  transform: scale(1);
+  border: 0px solid #01303f;
+}
+div.container-galerie-static figure > figcaption {
+  background-color: #02a9f7;
+  color: #d4f0fc;
+}
+div.container-galerie-static :nth-child(1) {
+  grid-column: 1/2;
+  grid-row: 1/2;
+}
+div.container-galerie-static :nth-child(2) {
+  grid-column: 2/3;
+  grid-row: 1/2;
+}
+div.container-galerie-static :nth-child(3) {
+  grid-column: 3/4;
+  grid-row: 1/2;
+}
+div.container-galerie-static :nth-child(4) {
+  grid-column: 1/2;
+  grid-row: 2/3;
+}
+div.container-galerie-static :nth-child(5) {
+  grid-column: 2/3;
+  grid-row: 4/5;
+}
+div.container-galerie-static :nth-child(6) {
+  grid-column: 3/4;
+  grid-row: 2/3;
+}
+div.container-galerie-static :nth-child(7) {
+  grid-column: 1/2;
+  grid-row: 3/4;
+}
+div.container-galerie-static :nth-child(8) {
+  grid-column: 3/4;
+  grid-row: 4/5;
+}
+div.container-galerie-static :nth-child(9) {
+  grid-column: 3/4;
+  grid-row: 3/4;
+}
+div.container-galerie-static :nth-child(10) {
+  grid-column: 1/2;
+  grid-row: 4/5;
+}
+@media only screen and (max-width: 950px) {
+  div.container-galerie-static {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+  }
+  div.container-galerie-static :nth-child(1) {
+    grid-column: auto;
+    grid-row: auto;
+  }
+  div.container-galerie-static :nth-child(2) {
+    grid-column: auto;
+    grid-row: auto;
+  }
+  div.container-galerie-static :nth-child(3) {
+    grid-column: auto;
+    grid-row: auto;
+  }
+  div.container-galerie-static :nth-child(4) {
+    grid-column: auto;
+    grid-row: auto;
+  }
+  div.container-galerie-static :nth-child(5) {
+    grid-column: auto;
+    grid-row: auto;
+  }
+  div.container-galerie-static :nth-child(6) {
+    grid-column: auto;
+    grid-row: auto;
+  }
+  div.container-galerie-static :nth-child(7) {
+    grid-column: auto;
+    grid-row: auto;
+  }
+  div.container-galerie-static :nth-child(8) {
+    grid-column: auto;
+    grid-row: auto;
+  }
+  div.container-galerie-static :nth-child(9) {
+    grid-column: auto;
+    grid-row: auto;
+  }
+  div.container-galerie-static :nth-child(10) {
+    grid-column: auto;
+    grid-row: auto;
+  }
+}
+@media only screen and (min-width: 300px) and (max-width: 650px) {
+  div.container-galerie-static {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+  div.container-galerie-static :nth-child(1) {
+    grid-column: auto;
+    grid-row: auto;
+  }
+  div.container-galerie-static :nth-child(2) {
+    grid-column: auto;
+    grid-row: auto;
+  }
+  div.container-galerie-static :nth-child(3) {
+    grid-column: auto;
+    grid-row: auto;
+  }
+  div.container-galerie-static :nth-child(4) {
+    grid-column: auto;
+    grid-row: auto;
+  }
+  div.container-galerie-static :nth-child(5) {
+    grid-column: auto;
+    grid-row: auto;
+  }
+  div.container-galerie-static :nth-child(6) {
+    grid-column: auto;
+    grid-row: auto;
+  }
+  div.container-galerie-static :nth-child(7) {
+    grid-column: auto;
+    grid-row: auto;
+  }
+  div.container-galerie-static :nth-child(8) {
+    grid-column: auto;
+    grid-row: auto;
+  }
+  div.container-galerie-static :nth-child(9) {
+    grid-column: auto;
+    grid-row: auto;
+  }
+  div.container-galerie-static :nth-child(10) {
+    grid-column: auto;
+    grid-row: auto;
+  }
+}
+
+/*# sourceMappingURL=galerie-statica.css.map */

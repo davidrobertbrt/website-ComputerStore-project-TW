@@ -1,0 +1,57 @@
+@use "header.scss";
+@use "footer.scss";
+@import "util";
+
+main{
+    display:grid;
+    margin:0.5rem;
+}
+
+section.container-produs{
+    display:flex;
+    justify-content:space-evenly;
+   
+    img{
+        display:block;
+        min-width:160px;
+        min-height:160px;
+        max-width:400px;
+        max-height:400px;
+        width:100%;
+        height:auto;
+        margin-top:auto;
+        margin-bottom:auto;
+        margin-left:5rem;
+        margin-right:5rem;
+        border-radius:2rem;
+    }
+
+    article{
+        display:grid;
+        background-color:$color1;
+        grid-template-columns: repeat(2,1fr);
+        grid-template-rows: repeat(2,1fr);
+        grid-gap:0.5rem;
+
+        div{
+            background-color:$color5;
+            color:$color1;
+            border-radius:0.5rem;
+            h3{
+                font-size:x-large;
+                padding:0.5rem;
+            }
+            p{
+                font-size:x-large;
+                padding:0.5rem;
+            }
+            ul{
+                list-style:circle;
+                padding-left:2rem;
+                >li{
+                    text-transform:uppercase;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <%-include("../fragmente/head")%>
+        <link rel="stylesheet" href="/css/produs.css">
+    </head>
+    <body>
+        <%-include("../fragmente/header")%>
+        <main class="page-content">
+            <section class="container-produs">
+                <img  src="/imagini/produse/<%- locals.prod.imagine %>" alt="[imagine <%- locals.prod.nume %>]" />
+                
+                <article class="container-produs-informatii">
+                    <div class="container-informatie">
+                        <h3>Nume</h3>
+                        <p class="nume"><%- locals.prod.nume %></p>
+                    </div>
+                    <div class="container-informatie">
+                        <h3>Pret</h3>
+                        <p class="pret"><%- locals.prod.pret %> LEI</p>
+                    </div>
+
+                    <div>
+                        <h3>Descriere</h3>
+                        <p class="descriere"><%- locals.prod.descriere %> </p>
+                    </div>
+
+                    <div>
+                        <h3>Detalii</h3>
+                        <ul>
+                            <li class="tag-uri">Tag-uri: <%- locals.prod.so %></p>
+                            <li class="categorie">Categorie: <%- locals.prod.categorie %> </p>
+                            <li class="stoc">Stoc: <%- locals.prod.stoc %></p>
+                            <li class="gaming">Gaming: <%- locals.prod.gaming %> </p>
+                            <li class="disponibilitate">Disponibilitate: <%- new Date(locals.prod.disponibil).toLocaleString("en-US")%> </p>
+                        </ul>
+                    </div>
+                </article>
+            </section>
+        </main>
+        <%-include("../fragmente/footer")%>
+    </body>
+</html>

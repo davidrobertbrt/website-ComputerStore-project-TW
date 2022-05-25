@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <%-include("../fragmente/head")%>
+    <link rel="stylesheet" href="/css/galerie.css">
+    <link rel="stylesheet" href="/css/galerie-animata.css">
+</head>
+<body>
+    <%-include("../fragmente/header")%>
+    <main>
+        <section class="main-content">
+            <h2>Secțiunea video</h2>
+            <div class="iframe-container">
+                <iframe name="ifr-video" width="560" height="315" src="https://www.youtube.com/embed/DhPjBTUuLG8" 
+                 frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                
+                <div class="iframe-container-selection">
+                    <a href="https://www.youtube.com/embed/DhPjBTUuLG8" target="ifr-video">Upgrade Win 11</a>
+                    <a href="https://www.youtube.com/embed/jlREdCO11S8" target="ifr-video">Optimizare Win 10</a>
+                    <a href="https://www.youtube.com/embed/o0vRFPIfSBE" target="ifr-video">Antivirus</a>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="video-container">
+                <div class="container-center-video">
+                    <div class="video-content-container">
+                        <video poster="/imagini/prezentarePoza1-300x200.jpg" width="320" height="240" preload="none" playsinline controls loop muted>
+                            <source src="/video/Technologie.mp4" type="video/mp4">
+                            <track default src="/video/tracks/captions-technologie.vtt" kind="captions" srclang="ro" label="romana">
+                            <track src="/video/tracks/captions-technologie-en.vtt" kind="captions" srclang="en" label="engleza">
+                        </video>
+                    </div>
+                </div>
+            </div>
+
+            <hr>
+
+            <div>
+                <h2>Galeria statică</h2>
+                <%- include("../fragmente/galerie_statica")%>
+            </div>
+
+            <div id="sectiune-galerie-animata">
+                <h2>Galerie dinamică</h2>
+                <div id="galerie-animata" class="galerie-a">
+                    <%for(let img of locals.galerieDinamic){%>
+                        <figure class="container-picture">
+                            <picture>
+                                <img src="/imagini/<%-img.big%>">
+                            </picture>
+                            <figcaption><%-img.descriere%></figcaption>
+                        </figure>
+                        <%}%>
+                </div> 
+            </div>
+        
+
+
+        </section>
+    </main> 
+    <%-include("../fragmente/footer")%>
+</body>
+</html>

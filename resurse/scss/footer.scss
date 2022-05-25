@@ -1,0 +1,81 @@
+@import "util";
+
+
+
+
+p.container-banner{
+    position: fixed;
+    margin:0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 1;
+    width: 25%;
+    font-size: 1.25vw;
+    background-color: $color5;
+    color: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding:1rem;
+    animation: 5s ease-out 0s 1 animatieBanner;
+    animation-fill-mode: forwards;
+    
+    @keyframes animatieBanner{
+        0%{
+            left:-200px;
+            right:-200px;
+            background-color: $color4;
+            transform:scale(0);
+            opacity:0;
+        }
+        100%{
+            left:0px;
+            right:0px;
+            background-color: $color5;
+            transform:scale(1);
+            opacity:0.75;
+        }
+    }
+
+
+    >button{
+        font-size:1.25vw;
+    }
+}
+
+
+
+footer.container-footer{
+    position:sticky;
+    top:100%;
+    background-color:$color2;
+    margin:0.5rem;
+    border-radius:0.5rem;
+    color:$color4;
+}
+
+div{
+    p{
+        margin:0;
+    }
+    >ul{
+        list-style:none;
+        padding:0;
+        margin:0;
+    }
+}
+
+
+div.container-footer-1{
+    display:flex;
+    align-items:center;
+    justify-content:space-evenly;
+    height:10rem;
+}
+
+
+div.container-footer-2{
+    background-color:black;
+    border-radius:inherit;
+    text-align:center;
+    color:white;
+}

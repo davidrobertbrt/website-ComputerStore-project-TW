@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <%-include("../fragmente/head")%>
+        <link rel="stylesheet" href="/css/produse.css">
+        <script type="text/javascript" src="/js/filtrareProduse.js"></script>
+    </head>
+    <body>
+        <%-include("../fragmente/header")%>
+        <main class="page-content">
+            <section class="container-filtrare">
+                <h2>Filtrare</h2>
+                <div class="subcontainer-filtrare">
+                    <div class="subcontainer-filtrare-1">
+                        <label for="name">Nume</label>
+                        <input type=text id="in-nume" name="nume">
+                    </div>
+                    <div class="subcontainer-filtrare-2">
+                        <datalist id="in-tag-data">
+                            <option value="intel">intel</option>
+                            <option value="windows">windows</option>
+                            <option value="ddr4">ddr4</option>
+                            <option value="ssd">ssd</option>
+                        </datalist>
+                        <label for="tags">Tag-uri</label>
+                        <input list="in-tag-data" id="in-tag" name="tags">
+                    </div>
+
+                    <div class="subcontainer-filtrare-3">
+                        <label for="pret">Pret<span id="infoRange">(0)</span></label>
+                        <span id="min-pret"></span><input type="range" id="in-pret" min="0" max="30000" value="0" name="pret"><span id="max-pret"></span>
+                    </div>
+
+                    <div class="subcontainer-filtrare-4">
+                        <h3>Stoc produse</h3>
+                        <label>Toate<input type="radio" name="stoc-produs" id="in-stoc-produs" value="0" checked></label>
+                        <label>In stoc<input type="radio" name="stoc-produs" id="in-stoc-produs" value="1"></label>
+                        <label>Stoc limitat<input type="radio" name="stoc-produs" id="in-stoc-produs" value="2"></label>
+                        <label>Stoc epuizat<input type="radio" name="stoc-produs" id="in-stoc-produs" value="3"></label>
+                    </div>
+
+                    <div class="subcontainer-filtrare-5">
+                        <h3>Categorie</h3>
+                        <% for(let categorie of locals.categoriiProduse) { 
+                            if(categorie === locals.tipSelectat || locals.tipSelectat === "null"){
+                        %>
+                        <label><%-categorie%><input type="checkbox" name="cat-produs" id="in-cat-produs" value="<%-categorie%>" checked></label> <%}else{%>
+                            <label><%-categorie%><input type="checkbox" name="cat-produs" id="in-cat-produs" value="<%-categorie%>" disabled></label>
+                        <%}}%>
+                    </div>
+
+                    <div class="subcontainer-filtrare-6">
+                        <label for="stare">Stare</label>
+                        <select id="in-stare" name="stare">
+                            <option value="" selected>Toate</option>
+                            <option value="nou">Nou</option>
+                            <option value="sh">SH</option>
+                        </select>
+                    </div>
+
+                    <div class="subcontainer-filtrare-7">
+                        <label for="producator">Producator</label>
+                        <select id="in-producator" name="producator" multiple>
+                            <% for(let producator of locals.producatori) { %>
+                                <option value="<%-producator%>"><%-producator%></option>
+                            <%}%>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="subcontainer-filtrare-8">
+                        <button class="btns-filter" id="btn-filter">Filtreaza</button>
+                        <button class="btns-filter" id="btn-reset">Reseteaza</button>
+                        <button class="btns-filter" id="btn-asc">Sorteaza crescator dupa nume si descriere</button>
+                        <button class="btns-filter" id="btn-desc">Sorteaza descrescator dupa nume si descriere</button>
+                        <button class="btns-filter" id="btn-pret">Calculeaza pret</button>
+                </div>
+
+            </section>
+
+            <section id="produse">
+                <% for(let prod of locals.produse) { %>
+                    <article class = "produs box">
+                        <div class = "container-produs-bottom">
+                                <label>Selecteaza produs<input data-idproduct = "<%-prod.id%>"type="checkbox" class="in-add-produs"></label>
+                                <label>Cantitate:<input type="number" id="in-cantitate-<%-prod.id%>" value = "0" min="0" max="5"></label>
+                        </div>
+                        <div class = "container-produs-top">
+                            <h3 class ="nume"><a href="/produs/<%-prod.id%>"><span class="val-nume"><%-prod.nume%></span></a></h3>
+                            <p class="categorie">Categorie: <span class="val-categorie"><%- prod.categorie%></span></p>
+                            <p class="descriere">Descriere: <span class="val-descriere"><%- prod.descriere%></span></p>
+                        </div>
+                        <div class="detalii container-produs-middle">
+                            <a href="/produs/<%-prod.id%>"><img src="imagini/produse/<%-prod.imagine%>"></a>
+                            <table>
+                                <tr>
+                                    <td>Preț:</td>
+                                    <td><span class="val-pret"><%- prod.pret%></span> Lei</td>
+                                </tr>
+                                <tr>
+                                    <td>Producator:</td>
+                                    <td><span class="val-producator"><%- prod.producator_produs%></span></td>
+                                </tr>
+                                <tr>
+                                    <td>Tag-uri:</td>
+                                    <td><span class="val-taguri"><%-prod.so%></span></td>
+                                </tr>
+                                <tr>
+                                    <td>Disponibilitate:</td>
+                                    <td><time><span class="val-data"><time datetime="<%-new Date(prod.disponibil).toLocaleString("en-US")%>"><%-new Date(prod.disponibil).toLocaleString("en-US")%></time></span></td>
+                                </tr>
+                                <tr>
+                                    <td>Stare:</td>
+                                    <td><span class="val-stare"><%-prod.stare%></span></td>
+                                </tr>
+                                <tr>
+                                    <td>Stoc:</td>
+                                    <td><span class="val-stoc"><%- prod.stoc%></span></td>
+                                </tr>
+                                <tr>
+                                    <td>Gaming:</td>
+                                    <td><span class="val-gaming"><%- prod.gaming%></span></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </article>
+                    <% }%>
+            </section>
+        </main>
+        <%-include("../fragmente/footer")%>
+    </body>
+</html>

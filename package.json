@@ -1,0 +1,32 @@
+{
+  "engines":{
+    "node":"16.x"
+  },  
+  "dependencies": {
+    "ejs": "^3.1.7",
+    "express": "^4.18.1",
+    "express-formidable": "^1.2.0",
+    "express-session": "^1.17.3",
+    "formidable": "^2.0.1",
+    "helmet": "^5.0.2",
+    "html-pdf-node": "^1.0.8",
+    "juice": "^8.0.0",
+    "nodemailer": "^6.7.5",
+    "pg": "^8.7.3",
+    "qrcode": "^1.5.0",
+    "sass": "^1.52.1",
+    "sharp": "^0.30.5",
+    "socket.io": "^4.5.1",
+    "socket.io-client": "^4.5.1",
+    "xml-js": "^1.6.11"
+  },
+  "name": "pixelart_proiect_web",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

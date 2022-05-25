@@ -1,0 +1,66 @@
+@use "header.scss";
+@use "footer.scss";
+@import "util";
+
+main{
+    margin:0.5rem;
+}
+
+section.actiuni-cumparare{
+
+    background-color:$color3;
+    color:$color1;
+    padding:0.5rem;
+    border-radius:0.5rem;
+    button{
+        margin:0.5rem;
+        background-color:$color5;
+        border:none;
+        color:inherit;
+        padding:0.9rem 2rem;
+        text-align:center;
+        text-decoration:none;
+        display:inline-block;
+        font-size:1rem;
+        cursor:pointer;
+    }
+}
+
+
+
+section.product-list{
+    margin-top:0.5rem;
+    display:flex;
+    flex-direction:column;
+    row-gap:1rem;
+}
+
+
+
+div.container-produs{
+    display:flex;
+    width:100%;
+    align-items:center;
+    justify-content:space-between;
+    background-color:$color2;
+    color:$color5;
+    border-radius:0.5rem;
+    >div{
+        margin:0.5rem;
+        p{
+            padding:0.5rem;
+        }
+        button{
+            margin:0.5rem;
+            background-color:$color5;
+            border:none;
+            color:$color1;
+            padding:0.9rem 2rem;
+            text-align:center;
+            text-decoration:none;
+            display:inline-block;
+            font-size:1rem;
+            cursor:pointer;
+        }
+    }
+}

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <%-include("../fragmente/head")%>
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+<body>
+    <%-include("../fragmente/header")%>
+    <main class="page-content">
+        <section class="container-prezentare">
+            <div class="container-prezentare-content">
+                <h3>Toți pentru unu și unu pentru toți</h3>
+                <p>Noi suntem dedicați pentru orice tip de persoană. Fie ea, programator, antreprenor, până la <i>gamer</i>, noi îți oferim tot ce ai nevoie (<abbr title="personal computer">PC</abbr>/Laptop) pentru a fi de succes sau pentru a te relaxa.</p>
+                <button><a href="/produse">Vezi produsele noastre</a></button>
+            </div>
+        </section>
+
+        <section class="container-orar">
+            <h3>Orar</h3>
+            <table id="tabel-orar">
+                <caption>Program lucru 2022</caption>
+                <thead>
+                    <tr>
+                        <th>Zi</th>
+                        <th colspan="4">Ore lucru</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Luni</td>
+                        <td>10-12</td>
+                        <td>12-14</td>
+                        <td>14-20</td>
+                    </tr>
+                    <tr>                  
+                        <td>Marti</td>
+                        <td>9-12</td>
+                        <td>12-14</td>
+                        <td>14-21</td>
+                    </tr>
+                    <tr>
+                        <td>Miercuri</td>
+                        <td>9-11</td>
+                        <td>11-13</td>
+                        <td>14-21</td>
+                    </tr>
+                    <tr>  
+                        <td>Joi</td>
+                        <td>9-11</td>
+                        <td>11-13</td>
+                        <td>14-21</td>
+                    </tr>
+                    <tr>       
+                        <td>Vineri</td>
+                        <td>9-12</td>
+                        <td>12-14</td>
+                        <td>14-19</td>
+                    </tr>
+                    <tr>
+                        <td>Sambata</td>
+                        <td>10-12</td>
+                        <td>12-13</td>
+                        <td>13-16</td>
+                    </tr>
+                    <tr>
+                        <td>Duminica</td>
+                        <td>10-14</td>
+                        <td colspan="2">inchis</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="container-calendar">
+            <h3>Evenimente</h3>
+            <div id="calendar">
+                <div class="zi-sapt">L</div>
+                <div class="zi-sapt">Ma</div>
+                <div class="zi-sapt">Mi</div>
+                <div class="zi-sapt">J</div>
+                <div class="zi-sapt">V</div>
+                <div class="zi-sapt">S</div>
+                <div class="zi-sapt">D</div>
+            <% 
+            nrZile=[31,28,31,30,31,30,31,31,30,31,30,31];
+            
+            d=new Date(); //observatie: este data serverului nu a clinetului; codul ejs fiind compilat pe server
+            anCurent=d.getFullYear();
+            lunaCurenta=d.getMonth();
+            if(anCurent%400==0 || (anCurent%4==0 && anCurent%100!=0)) nrZile=29;
+            let nrZileCalendar=nrZile[lunaCurenta]
+            primaZiLuna=new Date(anCurent, lunaCurenta, 1);
+            ultimaZiLuna=new Date(anCurent, lunaCurenta, nrZileCalendar);
+            ziSaptPrimaZiLuna=(primaZiLuna.getDay()-1+7)%7;
+            ziSaptUltimaZiLuna=(ultimaZiLuna.getDay()-1+7)%7;
+            for (let i=0;i<ziSaptPrimaZiLuna;i++){
+             %>
+             <div></div> 
+             <% } 
+
+             
+             for (let i=1;i<=nrZileCalendar;i++){
+                var obiectEvenimente=null;
+                    if(locals.evenimente)
+                         obiectEvenimente=locals.evenimente.find(function(elem){ return elem.data.valueOf()==new Date(anCurent,lunaCurenta,i).valueOf()})
+                 if(obiectEvenimente)
+                 {
+                 %>
+                 <div class="zi eveniment" title="<%= obiectEvenimente.text %>"><%= i %></div> 
+                 <%
+                 }
+                 else{
+                %>
+                <div class="zi"><%= i %></div> 
+                <% } 
+            } %>
+            </div>
+            <%
+            dataServer=new Date();
+            sirData=dataServer.getHours()+":"+dataServer.getMinutes()+":"+dataServer.getSeconds()
+
+            %>
+        </section>
+
+        <section class="container-anunturi">
+            <h3>Anunțuri</h3>
+            <ul>
+                <li>Anunt 1</li>
+                <li>Anunt 2</li>
+                <li>Anunt 3</li>
+                <li>Anunt 4</li>
+                <li>Anunt 5</li>
+            </ul>
+        </section>
+
+        <section class="container-users-online">
+            <h3>Utilizatori online</h3>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem cupiditate facilis molestiae nobis blanditiis mollitia cum natus quasi fugiat ipsa obcaecati ullam asperiores optio, quod, labore aperiam voluptas atque alias.</p>
+        </section>
+
+        <section class="container-stats">
+            <h3>Statistici</h3>
+            <ul>
+                <li>Ultima pagină accesată:<span id="last-page"></span></li>
+                <li>IP-ul tău:<%-locals.ip%></li>
+            </ul>
+        </section>
+
+        <section class="container-server">
+            <%
+                serverTime = new Date();
+                serverFormatTime = `${serverTime.getHours()}:${serverTime.getMinutes()}:${serverTime.getSeconds()}`;
+            %>
+            <h3>Informațiile server-ului</h3>
+            <ul>
+                <li>Ora server:<span id="serverTime"><%=serverFormatTime%></span></li>
+                <li>Ora client:<span id="clientTime"></span></li>
+            </ul>
+
+            <script>
+                    function addZeroString(nr)
+                    {
+                        if(nr<10)
+                            return "0"+nr;
+                        else
+                            return nr;
+                    }    
+
+                    var clientTime = new Date();
+                    var clientFormatTime = `${clientTime.getHours()}:${clientTime.getMinutes()}:${addZeroString(clientTime.getSeconds())}`;
+
+                    document.getElementById("clientTime").innerHTML = clientFormatTime;
+
+                    function updateTimeElem(divId)
+                    {
+                        var divData = document.getElementById(divId);
+
+                        if(divData.innerHTML != "")
+                        {
+                            var timp = divData.innerHTML.split(":");
+                            var dt = new Date(2002,3,6,timp[0],timp[1],timp[2]);
+                        }
+                        else
+                            var dt = new Date();
+
+                        dt.setSeconds(dt.getSeconds()+1);
+                        divData.innerHTML = `${addZeroString(dt.getHours())}:${addZeroString(dt.getMinutes())}:${addZeroString(dt.getSeconds())}`;
+                    }
+
+
+                    function updateTime()
+                    {
+                        updateTimeElem("clientTime");
+                        updateTimeElem("serverTime");
+                    }
+
+                    updateTime();
+                    setInterval(updateTime,1000);
+            </script>
+
+        </section>
+
+        <section class="container-quotes">
+            <div class="container-quote-1">
+                <img src="/imagini/quotes/mullenweg.jpg" alt="Bill Gates">
+                <h4>Matt Mullenweg, Social Media Entrepreneur</h4>
+                <q>Technology is best when it brings people together.</q>
+            </div>
+
+            <div class="container-quote-2">
+                <img src="/imagini/quotes/berners-lee.jpg" alt="Bill Gates">
+                <h4>Tim Berners-Lee, Inventor of the World Wide Web.</h4>
+                <q>The Web as I envisaged it, we have not seen it yet. The future is still so much bigger than the past.</q>
+            </div>
+
+            <div class="container-quote-3">
+                <img src="/imagini/quotes/stewart-brand.jpg" alt="Bill Gates">
+                <h3>Stewart Brand, Writer</h3>
+                <q>Once a new technology rolls over you, if you're not part of the steamroller, you're part of the road.</q>
+            </div>
+
+            <div class="container-quote-4">
+                <img src="/imagini/quotes/steve-jobs.jpg" alt="Bill Gates">
+                <h4>Steve Jobs, Co-founder of Apple.</h4>
+                <q>It's not a faith in technology. It's faith in people.</q>
+            </div>
+
+            <div class="container-quote-4">
+                <img src="/imagini/quotes/bill-gates.jpg" alt="Bill Gates">
+                <h4>Bill Gates, Co-founder of Microsoft</h4>
+                <q>The advance of technology is based on making it fit in so that you don't really even notice it, so it's part of everyday life</q>
+            </div>
+        </section>
+
+
+    </main>
+    <%-include("../fragmente/footer")%>
+</body>

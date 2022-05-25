@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <%-include("../fragmente/head")%>
+        <link rel="stylesheet" href="/css/admin-users.css">
+        <script type="text/javascript" src="/js/userPanel.js"></script>
+    </head>
+    <body>
+        <%-include("../fragmente/header")%>
+        <main class="page-content">
+            <section class="box">
+                <h2>Administrează utilizatorii</h2>
+                <p>De aici, vei putea șterge utilizatori.</p>
+            </section>
+
+            <section class ="box" id="user-content">
+                <table id="user-list">
+                    <thead>
+                        <tr>
+                            <td>Nume</td>
+                            <td>Prenume</td>
+                            <td>Username</td>
+                            <td>Email</td>
+                            <td>Acțiune</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for(let client of locals.allClienti){ %>
+                            <tr>
+                                <td><%-client.nume%></td>
+                                <td><%-client.prenume%></td>
+                                <td><%-client.username%></td>
+                                <td><%-client.email%></td>
+                                <td><button data-idclient = "<%-client.id%>" class="btn-stergereUser">Șterge user</button></td>
+                            </tr>
+                        <%}%>
+                    </tbody>
+                </table>
+            </section>
+
+
+        </main>
+        <%-include("../fragmente/footer")%>
+    </body>
+</html>

@@ -1,0 +1,34 @@
+@use "header.scss";
+@use "galerie-statica.scss";
+@use "footer.scss";
+@import "util";
+
+div.iframe-container{
+    line-height:0.8; ///pentru a propria butoanele de iframe
+    >iframe{
+        border:5px solid $color5;
+    }
+}
+
+
+div.iframe-container-selection{
+    display:flex;
+    justify-content:flex-end;
+
+    width:560px;
+    >a{
+        padding:0.5rem;
+        text-decoration:none;
+        width:min-content; ///incerc sa evit sa folosesc dimensiuni exacte ca poate arata urat pe diferite dimensiuni
+        display:inline-block;
+        border:1px solid $color4;
+        border-bottom-right-radius: 10px;
+        border-bottom-left-radius: 10px;
+        background-image: linear-gradient($color1,$color1 50%, $color2);
+        color:$color5;
+        transition:all 0.5s linear;
+        text-align:center;
+        line-height:1; ///pentru a nu face textul borsit.
+    }
+    
+}

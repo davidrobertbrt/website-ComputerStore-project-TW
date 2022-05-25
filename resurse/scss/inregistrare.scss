@@ -1,0 +1,68 @@
+@use "header.scss";
+@use "footer.scss";
+@import "util";
+
+main.page-content{
+    display:flex;
+    flex-direction:column;
+    >section{
+        margin:0.5rem;
+    }
+}
+
+section.container-page{
+    background-color:$color2;
+    color:$color5;
+    padding:0.5rem;
+    border-radius:0.5rem;
+}
+
+section.container-form{
+    background-color:$color2;
+    color:$color5;
+    padding:0.5rem;
+    border-radius:0.5rem;
+    display:flex;
+    justify-content:center;
+    >form{
+        width:50vw;
+        display:grid;
+        grid-template-columns:repeat(2,1fr);
+        gap:0.5rem;
+        // flex-direction:column;
+
+        label{
+            margin-top:auto;
+            margin-bottom:auto;
+            display:block;
+            font-size:large;
+        }
+
+        input[type=text],input[type=password],input[type=select],select,input[type=file]
+        {
+            font-size:large;
+            padding: 6px 6px;
+            margin: 4px 0;
+        }
+
+        input[type=submit]
+        {
+            grid-column-start:1;
+            grid-column-end:3;
+            margin:0.5rem;
+            background-color:$color5;
+            border:none;
+            color:inherit;
+            padding:0.9rem 2rem;
+            text-align:center;
+            text-decoration:none;
+            display:inline-block;
+            font-size:1rem;
+            cursor:pointer;
+            color:$color1;
+        }
+
+
+
+    }
+}

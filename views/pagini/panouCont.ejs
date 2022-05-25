@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <%-include("../fragmente/head")%>
+    <link rel="stylesheet" href="/css/panou-cont.css">
+</head>
+<body>
+    <%-include("../fragmente/header")%>
+    <main>
+        <form id="form_update" method="post" class="date form-design box" action="/contulMeu-update" enctype="multipart/form-data">
+            <section class="container-cont">
+                    <div class="container-cont-poza">
+                        <div class="container-cont-poza-top">
+                            <h3>Poza de profil</h3>
+                            <p>Aici poți modifica poza ta de profil!</p>
+                            <a href="#" style="color:red;">Șterge contul (acțiune ireversibilă!)</a>
+                        </div>
+                        <div class="container-cont-poza-middle">
+                            <img src="<%-locals.utilizatorCr.imagine%>">
+                        </div>
+
+                        <div class="container-cont-poza-bottom">
+                            <input type="file" name="poza-profil">
+                        </div>
+                    </div>
+
+                    <div class="container-cont-2">
+                        <label for="email">E-mail</label>
+                        <input type="text" name="email" id="in-email" value="<%-locals.utilizatorCr.email%>">
+                        <label for="nume">Nume</label>
+                        <input type="text" name="nume" id="in-nume" value="<%-locals.utilizatorCr.nume%>">
+                        <label for="prenume">Prenume</label>
+                        <input type="text" name="prenume" id="in-prenume" value="<%-locals.utilizatorCr.prenume%>">
+                        <label for="culoare-chat">Culoarea chat-ului </label>
+                        <select name="culoare-chat" id="in-culoare_chat">
+                            <option value="black"selected>Negru</option>
+                            <option value="blue">Albastru</option>
+                            <option value="orange">Portocaliu</option>
+                            <option value="rosu">Rosu</option>
+                            <option value="green">Verde</option>
+                        </select>   
+        
+                        <label for="ocupatie">Ocupația dvs.</label>
+                        <select name="ocupatie" id="in-ocupatie">
+                            <%for(const ocupatie of locals.ocupatii){
+                                if(ocupatie===locals.utilizatorCr.ocupatie){
+                             %>
+                                <option value="<%-ocupatie%>" selected><%-ocupatie%></option>
+                            <%}else{%>
+                                <option value="<%-ocupatie%>"><%-ocupatie%></option>
+                            <%}}%>
+                        </select>
+                    </div>
+                    
+                    <div class="container-cont-3">
+                        <label for="parola">Parola</label>
+                        <input type="password" name="parola" id="in-parola">
+                        <input type="submit">
+                    </div>
+            </section>
+        </form>
+    </main> 
+    <%-include("../fragmente/footer")%>
+</body>
+</html>

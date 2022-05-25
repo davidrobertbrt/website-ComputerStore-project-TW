@@ -1,0 +1,5 @@
+@use '../resurse/scss/galerie_animata_frag' with (
+  $transformare_i: scaleY(1),
+  $transformare_f: scaleY(0),
+  $nrimag: 8
+);

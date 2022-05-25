@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <%-include("../fragmente/head")%>
+        <link rel="stylesheet" href="/css/cos.css">
+        <script type="text/javascript" src="/js/cosVirtual.js"></script>
+    </head>
+    <body>
+        <%-include("../fragmente/header")%>
+        <main class="page-content">
+            <section class="actiuni-cumparare">
+                <h2>Coșul dvs.</h2>
+                <div class="totals">Preț total:<span class="pret-total"></span></div>
+                <button class="btn" id="cumparaProduse">Cumpără</button>
+            </section>
+
+            <section class="product-list">    
+                <template id="productTemplate">
+                    <div class="container-produs">
+                        <div class="product container-produs-left">
+                            <h3><span class="product-nume"></span></h3>
+                            <p>Pret:<span class="product-pret"></span></p>
+                            <p>Cantitatea:<span class="product-cantSelected"></span></p>
+                            <p>Categoria:<span class="product-categorie"></span></p>
+                            <p>Stare:<span class="product-stare"></span></p>
+                            <p>Producator:<span class="product-producator"></span></p>
+                            <p>Gaming:<span class="product-gaming"></span></p>
+                        </div>
+                        <div class="container-produs-right">
+                            <button class="delete-product">Sterge produsul</button>
+                        </div>
+                            
+                    </div>
+                </template>
+            </section>
+        </main>
+
+        
+
+        </main>
+        <%-include("../fragmente/footer")%>
+    </body>
+</html>

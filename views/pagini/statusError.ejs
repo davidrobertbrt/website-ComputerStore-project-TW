@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <%-include("../fragmente/head")%>
+    <link rel="stylesheet" href="/css/statusError.css">
+</head>
+<body>
+    <%-include("../fragmente/header")%>
+    <main>
+        <section class="content-statusError">
+            <img src="<%- locals.imagine %>" />
+            <h2><i class="fas fa-exclamation-triangle"></i><%- locals.titlu %></h2>
+            <p><%- locals.text %></p>
+        </section>
+    </main> 
+    <%-include("../fragmente/footer")%>
+</body>
+</html>
