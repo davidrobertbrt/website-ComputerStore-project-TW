@@ -419,7 +419,6 @@ function getWeekends(){
 // Promise.all([getOcupatiiUser()]).then(value=>{
 //     console.log(value);
 // });
-getDomainName();
 importStatusAssets();
 // getCategoriiProduse();
 generareSirAlpha();
