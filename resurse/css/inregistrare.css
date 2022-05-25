@@ -358,6 +358,20 @@ div.container-footer-1 {
   justify-content: space-evenly;
   height: 10rem;
 }
+@media only screen and (max-width: 650px) {
+  div.container-footer-1 {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 15rem;
+  }
+  div.container-footer-1 > div > p {
+    margin: 0.5rem;
+  }
+  div.container-footer-1 > div > ul {
+    margin: 0.5rem;
+  }
+}
 
 div.container-footer-2 {
   background-color: black;
@@ -452,6 +466,11 @@ section.container-form > form input[type=submit] {
   font-size: 1rem;
   cursor: pointer;
   color: #d4f0fc;
+}
+@media only screen and (min-width: 300px) and (max-width: 650px) {
+  section.container-form {
+    justify-content: flex-start;
+  }
 }
 
 /*# sourceMappingURL=inregistrare.css.map */

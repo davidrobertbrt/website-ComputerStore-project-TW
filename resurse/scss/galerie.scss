@@ -7,6 +7,10 @@ div.iframe-container{
     line-height:0.8; ///pentru a propria butoanele de iframe
     >iframe{
         border:5px solid $color5;
+        @media only screen and(max-width:650px)
+        {
+            width:100%;
+        }
     }
 }
 
@@ -16,6 +20,11 @@ div.iframe-container-selection{
     justify-content:flex-end;
 
     width:560px;
+
+    @media only screen and(max-width:650px)
+    {
+        width:inherit;
+    }
     >a{
         padding:0.5rem;
         text-decoration:none;

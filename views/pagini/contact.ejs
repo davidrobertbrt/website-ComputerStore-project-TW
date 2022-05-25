@@ -7,7 +7,7 @@
 <body>
     <%-include("../fragmente/header")%>
     <section class="main-content">
-        <div>
+        <div class = "container-form">
             <h2>Introduce un mesaj!</h2>
             <form id="form_contact" method="post" class="date form-design box" action="/send-contact">
                 <textarea name="mesaj" cols="30" rows="5" placeholder="Introduce mesaj!"></textarea>
@@ -15,7 +15,7 @@
             </form>
         </div>
 
-        <div>
+        <div class = "main-container-mesaje">
             <h2>Ultimele mesaje</h2>
             <div class="container-mesaje">
                 <% if (locals.mesaje) {

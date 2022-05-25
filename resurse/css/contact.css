@@ -358,6 +358,20 @@ div.container-footer-1 {
   justify-content: space-evenly;
   height: 10rem;
 }
+@media only screen and (max-width: 650px) {
+  div.container-footer-1 {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 15rem;
+  }
+  div.container-footer-1 > div > p {
+    margin: 0.5rem;
+  }
+  div.container-footer-1 > div > ul {
+    margin: 0.5rem;
+  }
+}
 
 div.container-footer-2 {
   background-color: black;
@@ -396,6 +410,48 @@ hr {
   border-left: 25px solid #02577a;
   background-clip: content-box;
   background-color: #02577a;
+}
+
+div.container-form {
+  margin: 0.5rem;
+  background-color: #02577a;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+form#form_contact {
+  display: flex;
+  flex-direction: column;
+}
+form#form_contact > input[type=submit] {
+  margin: 0.5rem;
+  background-color: #01303f;
+  border: none;
+  color: inherit;
+  padding: 0.9rem 2rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1rem;
+  cursor: pointer;
+  color: #d4f0fc;
+}
+
+div.main-container-mesaje {
+  background-color: #02577a;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  margin: 0.5rem;
+}
+
+article.mesaj-c {
+  background-color: #02a9f7;
+  z-index: 1;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  color: #01303f;
+  margin: 0.5rem;
 }
 
 /*# sourceMappingURL=contact.css.map */

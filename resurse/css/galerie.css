@@ -558,6 +558,20 @@ div.container-footer-1 {
   justify-content: space-evenly;
   height: 10rem;
 }
+@media only screen and (max-width: 650px) {
+  div.container-footer-1 {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 15rem;
+  }
+  div.container-footer-1 > div > p {
+    margin: 0.5rem;
+  }
+  div.container-footer-1 > div > ul {
+    margin: 0.5rem;
+  }
+}
 
 div.container-footer-2 {
   background-color: black;
@@ -604,11 +618,21 @@ div.iframe-container {
 div.iframe-container > iframe {
   border: 5px solid #01303f;
 }
+@media only screen and (max-width: 650px) {
+  div.iframe-container > iframe {
+    width: 100%;
+  }
+}
 
 div.iframe-container-selection {
   display: flex;
   justify-content: flex-end;
   width: 560px;
+}
+@media only screen and (max-width: 650px) {
+  div.iframe-container-selection {
+    width: inherit;
+  }
 }
 div.iframe-container-selection > a {
   padding: 0.5rem;

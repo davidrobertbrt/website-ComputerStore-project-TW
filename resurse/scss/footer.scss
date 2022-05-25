@@ -51,6 +51,8 @@ footer.container-footer{
     margin:0.5rem;
     border-radius:0.5rem;
     color:$color4;
+
+
 }
 
 div{
@@ -70,6 +72,21 @@ div.container-footer-1{
     align-items:center;
     justify-content:space-evenly;
     height:10rem;
+    @media only screen and(max-width:650px)
+    {
+        flex-direction:column;
+        justify-content:flex-start;
+        align-items:flex-start;
+        height:15rem;
+        >div{
+            >p{
+                margin:0.5rem;
+            }
+            >ul{
+                margin:0.5rem;
+            }
+        }
+    }
 }
 
 

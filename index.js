@@ -58,7 +58,6 @@ if(process.env.SITE_ONLINE){
         ssl: {
             rejectUnauthorized: false
           } });
-
 }
 else{
     client = new Client({
@@ -81,13 +80,6 @@ server.use(express.json());
 server.use(express.urlencoded({extended: false}));
 server.use(helmet.frameguard());
 server.listen(varGlobale.port);
-
-function getDomainName()
-{
-    ///DE FACUT: Implementare heroku
-    varGlobale.protocol="http://";
-    varGlobale.numeDomeniu = "localhost:8080";
-}
 
 
 function generareSirAlpha(){

@@ -28,7 +28,6 @@ section.container-produs{
 
     article{
         display:grid;
-        background-color:$color1;
         grid-template-columns: repeat(2,1fr);
         grid-template-rows: repeat(2,1fr);
         grid-gap:0.5rem;
@@ -53,5 +52,23 @@ section.container-produs{
                 }
             }
         }
+
+        @media only screen and(max-width:1550px)
+        {
+            display:flex;
+            flex-direction:column;
+            
+        }
+
+
+    }
+
+    @media only screen and(max-width:1550px)
+    {
+        img{
+            display:none;
+        }
+        display:flex;
+        flex-direction:column;
     }
 }

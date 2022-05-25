@@ -88,6 +88,12 @@ div.subcontainer-filtrare
         margin:0.5rem;
     }
 
+    @media only screen and(max-width:1550px)
+    {
+        display:flex;
+        flex-direction:column;
+        
+    }
 
 }
 

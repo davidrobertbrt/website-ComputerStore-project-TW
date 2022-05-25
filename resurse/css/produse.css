@@ -358,6 +358,20 @@ div.container-footer-1 {
   justify-content: space-evenly;
   height: 10rem;
 }
+@media only screen and (max-width: 650px) {
+  div.container-footer-1 {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 15rem;
+  }
+  div.container-footer-1 > div > p {
+    margin: 0.5rem;
+  }
+  div.container-footer-1 > div > ul {
+    margin: 0.5rem;
+  }
+}
 
 div.container-footer-2 {
   background-color: black;
@@ -465,6 +479,12 @@ div.subcontainer-filtrare input {
 }
 div.subcontainer-filtrare div {
   margin: 0.5rem;
+}
+@media only screen and (max-width: 1550px) {
+  div.subcontainer-filtrare {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 section#produse {
