@@ -50,7 +50,7 @@ server.use(session({
 
 if(process.env.SITE_ONLINE){
     varGlobale.protocol="https://";
-    varGlobale.numeDomeniu="ancient-cliffs-59708.herokuapp.com"//atentie, acesta e domeniul pentru aplicatia mea; voi trebuie sa completati cu datele voastre
+    varGlobale.numeDomeniu="proiect-pixelpro-tw.herokuapp.com"//atentie, acesta e domeniul pentru aplicatia mea; voi trebuie sa completati cu datele voastre
     client=new Client({ 
         user: 'jjzzsqymwymdxl', 
         password:'567183f9f64d5a68f93f04620101ac1ec79306f426d4de3d1262eb95333c501b', 
