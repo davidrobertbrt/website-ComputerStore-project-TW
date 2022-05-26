@@ -30,8 +30,6 @@ window.addEventListener("DOMContentLoaded",function(){
                     var condNume = numeProd.includes(inputNume);
                 }
             }
-            else
-                alert("Nu ai completat un criteriu!");
 
             var pretProd = parseFloat(art.getElementsByClassName("val-pret")[0].innerText);
             var condPret = pretProd >= parseFloat(document.getElementById("in-pret").value);
@@ -87,9 +85,7 @@ window.addEventListener("DOMContentLoaded",function(){
                 if(inputStareProd !== art.getElementsByClassName("val-stare")[0].innerText)
                     condStare = false;
             }
-            else
-                alert("Nu ai completat un criteriu!");
-            
+
             var checkCategorie = document.getElementsByName("cat-produs");
             var catSelected = [];
             var condCategorie = true;
