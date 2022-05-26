@@ -428,8 +428,50 @@ createImages();
 
 console.log("Serverul este funcțional. Vedeți console logs pentru orice activitate.");
 
+var ipuri_active = {};
+
 server.use("/*",function(req,res,next){
     getCategoriiProduse().then(catProduse => {
+        let ipReq = getIP(req);
+        let ip_gasit = ipuri_active[ipReq+"|" + req.url];
+        let crTime = new Date();
+
+        if(ip_gasit)
+        {
+            if((crTime - ip_gasit.data) < 5 * 1500)
+            {
+                if(ip_gasit.nr > 10)
+                {
+                    res.render("pagini/status",{message:"Prea multe cereri într-un interval scurt. Vă rugăm să reveniți."});
+                    ip_gasit.data = crTime;
+                    return;
+                }
+                else
+                {
+                    ip_gasit.data = crTime;
+                    ip_gasit.nr++;
+                }
+            }
+            else
+            {
+                ip_gasit.data = crTime;
+                ip_gasit.nr = 1;
+            }
+        }
+        else
+        {
+            ipuri_active[ipReq+"|"+req.url] = {nr:1, data:crTime};
+        }
+
+        let queryAccesari = `insert into accesari(ip,user_id,pagina) values($1,$2,$3)`;
+        if(ipReq)
+        {
+            var id_user = req.session.utilizator?req.session.utilizator.id:null;
+            client.query(queryAccesari,[ipReq,id_user,req.url],function(err,rez){
+                if(err)
+                    console.log(err);
+            });
+        }
 
         try{
             var optiuniFisier = fs.readFileSync(path.normalize(__dirname + "/resurse/json/server.json"),{},function(err, data){ console.log(data);}).toString("utf-8");
@@ -456,30 +498,62 @@ server.use("/*",function(req,res,next){
     });
 });
 
+function stergereAccesariVechi()
+{
+    let query = `delete from accesari where now() - data_accesare > interval '10 minutes'`;
+
+    client.query(query,function(err,rez){
+        if(err)
+            console.log(err);
+    });
+}
+
+
+function stergereIpBlocat()
+{
+    let crTime = new Date();
+    for (let crIp in ipuri_active)
+    {
+        if(crTime - ipuri_active[crIp].data > 2 * 60 * 1000)
+        {
+            console.log(`[IP-INFO] Deblocat IP ${crIp}`);
+            delete ipuri_active[crIp];
+        }
+    }
+}
+
+stergereAccesariVechi();
+setInterval(stergereAccesariVechi,10*60*1000);
+setInterval(stergereIpBlocat,2*60*1000);
+
+
 server.get(["/","/home","/index"],(req,res)=>{
 
-    var events = [];
-    var crDate = new Date();
-    var firstMonday = getFirstMonday();
-    var weekends = getWeekends();
-    var aniversare = new Date(crDate.getFullYear(),crDate.getMonth(),16);
-
-    events.push({data: firstMonday,text:"Reducere de început"});
-
-
-    for(i = weekends.length-1; i>=weekends.length-4; i--)
-        events.push({data: weekends[i],text:"Promoție weekend"});
-
-    events.push({data: weekends[0],text:"Podcast"});
-    events.push({data: weekends[1],text:"Security day"});
-    events.push({data:aniversare,text:"Aniversare"});
-
-    res.render('pagini/index',{ip:getIP(req),evenimente:events,page:"/index"});
-
-
-
-
+    client.query("select username from utilizatori where id in (select distinct user_id from accesari where now() - data_accesare < interval '5 minutes')").then(function(rezultat){
+        console.log("[INFO] Accesari curente");
+        console.log(rezultat.rows);
+        var events = [];
+        var crDate = new Date();
+        var firstMonday = getFirstMonday();
+        var weekends = getWeekends();
+        var aniversare = new Date(crDate.getFullYear(),crDate.getMonth(),16);
     
+        events.push({data: firstMonday,text:"Reducere de început"});
+    
+    
+        for(i = weekends.length-1; i>=weekends.length-4; i--)
+            events.push({data: weekends[i],text:"Promoție weekend"});
+    
+        events.push({data: weekends[0],text:"Podcast"});
+        events.push({data: weekends[1],text:"Security day"});
+        events.push({data:aniversare,text:"Aniversare"});
+
+        let obJson, elementMesaje,mesajeXML;
+
+        [obJson,elementMesaje,mesajeXML] = parseMessage();
+    
+        res.render('pagini/index',{ip:getIP(req),evenimente:events,page:"/index",onlineUsers:rezultat.rows,mesaje:mesajeXML});
+    });    
 });
 
 // server.get("/admin",function(req,res){
@@ -609,14 +683,14 @@ server.post("/register-user",function(req,res){
                 eroareInreg += "Nu ai completat toate câmpurile required!\n"
 
             const regexNumePrenume = new RegExp("^[a-z -]+$","i");
-            const regexEmail = new RegExp("^[^\s@]+@[^\s@]+\.[^\s@]+$");
+            //const regexEmail = new RegExp("^[^\s@]+@[^\s@]+\.[^\s@]+$");
             const regexUsername = new RegExp("^[a-zA-Z0-9]([._-](?![._-])|[a-zA-Z0-9]){3,18}[a-zA-Z0-9]$");
 
 
             if(!campuriText["nume"].match(regexNumePrenume) || !campuriText["prenume"].match(regexNumePrenume))
                 eroareInreg += "Nume și prenumele conțin caractere ilegale!\n";
 
-            if(!campuriText["email"].match(regexEmail))
+            if(!campuriText["email"].includes("@"))
                 eroareInreg += "Email-ul nu are un format corect!\n";
             
             if(!campuriText["username"].match(regexUsername))
@@ -739,7 +813,7 @@ server.post("/login",function(req,res){
                         ocupatie: rez.rows[0].ocupatie,
                         email:rez.rows[0].email,
                         rol:rez.rows[0].rol,
-                        imagine:"default.png"
+                        imagine:existsImage?rez.rows[0].cale_imagine.replace("uploads\\",""):"default.png"
                     }
                 }
             }
@@ -755,7 +829,7 @@ server.post("/login",function(req,res){
 
 });
 
-server.get("/admin/manageUsers",function(req,res){
+server.get("/manageUsers",function(req,res){
 
     if(typeof req.session.utilizator !== 'undefined')
     {

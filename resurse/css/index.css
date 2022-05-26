@@ -2,39 +2,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Radio+Canada:wght@300;400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Radio+Canada:wght@300;400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Radio+Canada:wght@300;400;500;600;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Radio+Canada:wght@300;400;500;600;700&display=swap");
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  height: 100vh;
-  font-family: "Radio Canada";
-  margin: 0.5rem;
-  box-sizing: border-box;
-  background-color: #d4f0fc;
-  font-size-adjust: 0.55;
-}
-
-.dark {
-  background-color: #333333;
-  color: #d4f0fc;
-}
-
-.active {
-  background-color: #d4f0fc;
-}
-
-hr {
-  height: 2px;
-  border-top: 5px solid transparent;
-  border-bottom: 5px solid transparent;
-  border-right: 25px solid #02577a;
-  border-left: 25px solid #02577a;
-  background-clip: content-box;
-  background-color: #02577a;
-}
-
 div.triunghi {
   display: inline-block;
   width: 0;
@@ -64,6 +31,7 @@ a.goTop:hover {
   border-left: 10px solid black;
   border-right: 10px solid black;
 }
+
 a.goTop:hover > div {
   transition: all 1s;
   transition-property: border-bottom, transform, opacity;
@@ -337,6 +305,44 @@ div.container-connected > div.container-connected-right p {
   display: inline-block;
 }
 
+div.triunghi {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid #02a9f7;
+  transition: all 1s;
+  transition-property: border-bottom, transform, opacity;
+  transform: translateY(0);
+}
+
+a.goTop {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  padding: 15px;
+  border-radius: 25px;
+  border-left: 10px solid #02a9f7;
+  border-right: 10px solid #02a9f7;
+  z-index: 1;
+}
+
+a.goTop:hover {
+  transition: all 1s;
+  transition-property: border-left, border-right;
+  border-left: 10px solid black;
+  border-right: 10px solid black;
+}
+
+a.goTop:hover > div {
+  transition: all 1s;
+  transition-property: border-bottom, transform, opacity;
+  transform: translateY(-70%);
+  border-bottom: 10px solid black;
+  opacity: 1;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -388,6 +394,44 @@ hr {
 }
 #calendar div:nth-child(n+8).eveniment {
   background-color: #01303f;
+}
+
+div.triunghi {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid #02a9f7;
+  transition: all 1s;
+  transition-property: border-bottom, transform, opacity;
+  transform: translateY(0);
+}
+
+a.goTop {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  padding: 15px;
+  border-radius: 25px;
+  border-left: 10px solid #02a9f7;
+  border-right: 10px solid #02a9f7;
+  z-index: 1;
+}
+
+a.goTop:hover {
+  transition: all 1s;
+  transition-property: border-left, border-right;
+  border-left: 10px solid black;
+  border-right: 10px solid black;
+}
+
+a.goTop:hover > div {
+  transition: all 1s;
+  transition-property: border-bottom, transform, opacity;
+  transform: translateY(-70%);
+  border-bottom: 10px solid black;
+  opacity: 1;
 }
 
 html {
@@ -504,6 +548,44 @@ div.container-footer-2 {
   color: white;
 }
 
+div.triunghi {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid #02a9f7;
+  transition: all 1s;
+  transition-property: border-bottom, transform, opacity;
+  transform: translateY(0);
+}
+
+a.goTop {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  padding: 15px;
+  border-radius: 25px;
+  border-left: 10px solid #02a9f7;
+  border-right: 10px solid #02a9f7;
+  z-index: 1;
+}
+
+a.goTop:hover {
+  transition: all 1s;
+  transition-property: border-left, border-right;
+  border-left: 10px solid black;
+  border-right: 10px solid black;
+}
+
+a.goTop:hover > div {
+  transition: all 1s;
+  transition-property: border-bottom, transform, opacity;
+  transform: translateY(-70%);
+  border-bottom: 10px solid black;
+  opacity: 1;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -606,6 +688,7 @@ section.container-anunturi {
   grid-area: container4;
   background-color: #02577a;
   color: #d4f0fc;
+  padding: 0.5rem;
 }
 section.container-anunturi h3 {
   text-align: center;
@@ -613,17 +696,27 @@ section.container-anunturi h3 {
 section.container-anunturi ul {
   margin: 0;
 }
+section.container-anunturi ul > li {
+  width: 13.5rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
 
 section.container-users-online {
   grid-area: container5;
   background-color: #02577a;
   color: #d4f0fc;
+  padding: 0.5rem;
 }
 section.container-users-online h3 {
   text-align: center;
 }
 section.container-users-online p {
   margin: 0;
+}
+section.container-users-online > ul {
+  columns: 2;
 }
 
 section.container-stats {

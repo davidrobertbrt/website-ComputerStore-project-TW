@@ -1,4 +1,42 @@
 @import url("https://fonts.googleapis.com/css2?family=Radio+Canada:wght@300;400;500;600;700&display=swap");
+div.triunghi {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid #02a9f7;
+  transition: all 1s;
+  transition-property: border-bottom, transform, opacity;
+  transform: translateY(0);
+}
+
+a.goTop {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  padding: 15px;
+  border-radius: 25px;
+  border-left: 10px solid #02a9f7;
+  border-right: 10px solid #02a9f7;
+  z-index: 1;
+}
+
+a.goTop:hover {
+  transition: all 1s;
+  transition-property: border-left, border-right;
+  border-left: 10px solid black;
+  border-right: 10px solid black;
+}
+
+a.goTop:hover > div {
+  transition: all 1s;
+  transition-property: border-bottom, transform, opacity;
+  transform: translateY(-70%);
+  border-bottom: 10px solid black;
+  opacity: 1;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -70,7 +108,7 @@ hr {
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   animation-fill-mode: forwards;
-  animation-duration: 24s;
+  animation-duration: 27s;
   transform-origin: center center;
 }
 
@@ -122,6 +160,12 @@ hr {
 #galerie-animata figure:nth-of-type(8):hover {
   animation-play-state: paused;
 }
+#galerie-animata figure:nth-of-type(9) {
+  animation-delay: 24s;
+}
+#galerie-animata figure:nth-of-type(9):hover {
+  animation-play-state: paused;
+}
 
 /*cum calculam timpii:
 - avem 7 poze; vrem pentru fiecare un timp de afisare de 1.5 secunde si o trecere spre urmatoarea poza de 1.5 secunde
@@ -140,7 +184,7 @@ x%........3s
     opacity: 1;
   }
   /*perioada 0-5% in care se afiseaza fara efect */
-  6.25% {
+  5.5555555556% {
     transform: scaleY(1);
   }
   /*transformare inceput disparitie*/
@@ -148,22 +192,22 @@ x%........3s
     opacity: 1;
   }
   /* de  aici doresc sa descresc si opacitatea;*/
-  12.4% {
+  11.0111111111% {
     z-index: 10;
     opacity: 0;
     transform: scaleY(0);
   }
-  12.5% {
+  11.1111111111% {
     z-index: -10;
     transform: scaleY(1);
   }
   /* il ascund cat mai in spate sa nu vina peste imaginile care erau mai sus in html decat el*/
-  87.4% {
+  88.7888888889% {
     opacity: 0;
     transform: scaleY(1);
     z-index: -10;
   }
-  87.5% {
+  88.8888888889% {
     z-index: 0;
   }
   /*setez z-index la 0 ca sa revina la ordinea normala de afisare*/

@@ -26,7 +26,7 @@
                     </thead>
                     <tbody>
                         <% for(let client of locals.allClienti){ %>
-                            <tr>
+                            <tr id = "<%-client.id%>">
                                 <td><%-client.nume%></td>
                                 <td><%-client.prenume%></td>
                                 <td><%-client.username%></td>

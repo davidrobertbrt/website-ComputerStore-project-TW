@@ -11,6 +11,10 @@ window.addEventListener("DOMContentLoaded",function(){
             .then((response)=>{
                 return response.json();
             })
+
+            const row = btn.parentNode.parentNode;
+            row.parentNode.removeChild(row);
+
         });
     });
 });

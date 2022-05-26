@@ -41,10 +41,11 @@
             <div class="container-connected-right">
                 <p>Bun venit,<%-`${locals.utilizatorCr.nume} ${locals.utilizatorCr.prenume}`%></p>
                 <ul>
-                    <li><a href="/logout">Deconectare</a></li>
-                    <li><a href="/contul-meu">Profilul tău</a></li>
+                    <li><a href="/logout"><i class="fa-solid fa-door-open"></i></a></li>
+                    <li><a href="/contul-meu"><i class="fa-solid fa-address-card"></i>Profilul tău</a></li>
                     <%if(locals.utilizatorCr.rol === "admin"){%>
-                        <li><a href="/admin/manageUsers">Administrează utilizatori</a></li>
+                        <li><a href="/manageUsers"><i class="fa-solid fa-wrench"></i>Administrează utilizatori</a></li>
+                        <li><a href="/manageAnunturi"><i class="fa-solid fa-flag"></i>Administrează anunțurile</a></li>
                     <%}%>
                 </ul>
             </div>

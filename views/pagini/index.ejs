@@ -123,23 +123,41 @@
         </section>
 
         <section class="container-anunturi">
-            <h3>Anunțuri</h3>
+            <h3>Mesaje utilizatori</h3>
             <ul>
-                <li>Anunt 1</li>
-                <li>Anunt 2</li>
-                <li>Anunt 3</li>
-                <li>Anunt 4</li>
-                <li>Anunt 5</li>
+                <% if (locals.mesaje) {
+					var mesajeSort=locals.mesaje.sort(function(a,b) {return (new Date(b.attributes.data)).getTime()-(new Date(a.attributes.data)).getTime()})
+					for (let msg of mesajeSort) { 
+						let dt=new Date(msg.attributes.data);
+						%>
+                        <li><small><time datetime="<%= dt.getUTCDate() %>"><%= dt.toLocaleString('ro-RO', {
+														weekday: 'short', 
+														day: 'numeric',
+														year: 'numeric', 
+														month: 'numeric', 
+														hour: 'numeric',
+														minute: 'numeric', 
+														second: 'numeric',
+													}) %></time></small>    <%=msg.elements[0].text%></li>
+                    <% } %>
+                <% }else{ %>
+                    <li>Niciun mesaj scris de useri. Scrie tu unul!</li>
+                <%}%>
             </ul>
         </section>
 
         <section class="container-users-online">
-            <h3>Utilizatori online</h3>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem cupiditate facilis molestiae nobis blanditiis mollitia cum natus quasi fugiat ipsa obcaecati ullam asperiores optio, quod, labore aperiam voluptas atque alias.</p>
+            <h3><i class="fa-solid fa-users"></i> Utilizatori online</h3>
+            <p>Utilizatori conectați în acest moment: <%=locals.onlineUsers.length%></p>
+            <ul>
+                <% for(let i = 0; i < locals.onlineUsers.length; i++){%>
+                    <li><%=locals.onlineUsers[i].username%></li>
+                <%}%>
+            </ul>
         </section>
 
         <section class="container-stats">
-            <h3>Statistici</h3>
+            <h3><i class="fa-solid fa-mask"></i> Statistici</h3>
             <ul>
                 <li>Ultima pagină accesată:<span id="last-page"></span></li>
                 <li>IP-ul tău:<%-locals.ip%></li>
@@ -151,7 +169,7 @@
                 serverTime = new Date();
                 serverFormatTime = `${serverTime.getHours()}:${serverTime.getMinutes()}:${serverTime.getSeconds()}`;
             %>
-            <h3>Informațiile server-ului</h3>
+            <h3><i class="fa-solid fa-server"></i> Informațiile server-ului</h3>
             <ul>
                 <li>Ora server:<span id="serverTime"><%=serverFormatTime%></span></li>
                 <li>Ora client:<span id="clientTime"></span></li>

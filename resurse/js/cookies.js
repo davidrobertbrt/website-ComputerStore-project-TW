@@ -12,7 +12,11 @@ window.addEventListener("DOMContentLoaded", function(){
 
     if(document.getElementById("last-page"))
       document.getElementById("last-page").innerHTML = `<a href="${getCookie("last_page")}">${getCookie("last_page")}</a>`;
-
+  }
+  else
+  {
+    if(document.getElementById("last-page"))
+        document.getElementById("last-page").innerHTML = `<span style="color:crimson;">Cookie-uri dezactivate</span>`;
   }
   
 })
