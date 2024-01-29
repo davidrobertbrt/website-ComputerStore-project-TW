@@ -120,6 +120,7 @@ ul.container-meniu > li {
   transition: text-shadow 0.7s;
 }
 ul.container-meniu > li a {
+  display: block;
   text-decoration: none;
   cursor: pointer;
   color: inherit;
@@ -141,7 +142,8 @@ ul.container-meniu > li:hover {
   position: relative;
   background-color: #02577a;
   color: #d4f0fc;
-  transition: 1s background-color;
+  transition: 1s;
+  transition-property: background-color;
 }
 ul.container-meniu > li:hover > a {
   text-shadow: 0.0625rem 0.0625rem 0.125rem;
@@ -182,7 +184,8 @@ ul.container-meniu > li:hover > ul > li {
 ul.container-meniu > li:hover > ul > li:hover {
   background-color: #02577a;
   color: #d4f0fc;
-  transition: 1s background-color;
+  transition: 1s;
+  transition-property: background-color;
   text-decoration: underline;
 }
 
@@ -234,8 +237,15 @@ ul.container-meniu > li:hover > ul > li:hover {
     text-shadow: none;
     padding: 0.5rem;
   }
+  input#mobileMenu[type=checkbox]:checked + ul.container-meniu > li > a {
+    transition: letter-spacing 1s;
+    letter-spacing: 2px;
+  }
   input#mobileMenu[type=checkbox]:checked + ul.container-meniu > li span.hidden-link {
     display: none;
+  }
+  input#mobileMenu[type=checkbox]:checked + ul.container-meniu > li:hover > a {
+    letter-spacing: 5px;
   }
   input#mobileMenu[type=checkbox]:checked + ul.container-meniu > li:hover > ul {
     position: absolute;

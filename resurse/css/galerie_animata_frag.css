@@ -115,43 +115,25 @@ hr {
 #galerie-animata figure:nth-of-type(1) {
   animation-delay: 0s;
 }
-#galerie-animata figure:nth-of-type(1):hover {
-  animation-play-state: paused;
-}
 #galerie-animata figure:nth-of-type(2) {
   animation-delay: 3s;
-}
-#galerie-animata figure:nth-of-type(2):hover {
-  animation-play-state: paused;
 }
 #galerie-animata figure:nth-of-type(3) {
   animation-delay: 6s;
 }
-#galerie-animata figure:nth-of-type(3):hover {
-  animation-play-state: paused;
-}
 #galerie-animata figure:nth-of-type(4) {
   animation-delay: 9s;
-}
-#galerie-animata figure:nth-of-type(4):hover {
-  animation-play-state: paused;
 }
 #galerie-animata figure:nth-of-type(5) {
   animation-delay: 12s;
 }
-#galerie-animata figure:nth-of-type(5):hover {
-  animation-play-state: paused;
-}
 #galerie-animata figure:nth-of-type(6) {
   animation-delay: 15s;
-}
-#galerie-animata figure:nth-of-type(6):hover {
-  animation-play-state: paused;
 }
 #galerie-animata figure:nth-of-type(7) {
   animation-delay: 18s;
 }
-#galerie-animata figure:nth-of-type(7):hover {
+#galerie-animata:hover figure {
   animation-play-state: paused;
 }
 

@@ -38,7 +38,8 @@
 @mixin highlightBoxMenu{
     background-color:$color4;
     color:$color1;
-    transition:1s background-color;
+    transition:1s;
+    transition-property:background-color;
 }
 
 
@@ -94,6 +95,7 @@ ul.container-meniu{
         //margin-right:0.5rem;
         @include animatieOutText;
         a{
+            display:block;
             text-decoration:none;
             cursor:pointer;
             color:inherit;
@@ -204,6 +206,12 @@ ul.container-meniu{
                 position:relative;
                 text-shadow:none;
                 padding:0.5rem;
+                
+                >a{
+                    transition: letter-spacing 1s;
+                    letter-spacing:2px;
+                }
+
 
                 span.hidden-link
                 {
@@ -211,6 +219,12 @@ ul.container-meniu{
                 }
 
                 &:hover{
+
+                    >a{
+                        letter-spacing:5px;
+                    }
+
+
                     >ul{
                         position:absolute;
                         display:flex;

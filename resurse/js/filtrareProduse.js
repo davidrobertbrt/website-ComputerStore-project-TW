@@ -23,7 +23,7 @@ window.addEventListener("DOMContentLoaded",function(){
                 {
                     condNume = false;
                     var splitInputNume = inputNume.split('*');
-                    if(numeProd.includes(splitInputNume[0]) && numeProd.includes(splitInputNume[1]))
+                    if(numeProd.startsWith(splitInputNume[0]) && numeProd.endsWith(splitInputNume[1]))
                         condNume = true;
                 }
                 else{

@@ -438,9 +438,9 @@ server.use("/*",function(req,res,next){
 
         if(ip_gasit)
         {
-            if((crTime - ip_gasit.data) < 5 * 1500)
+            if((crTime - ip_gasit.data) < 15 * 1000)
             {
-                if(ip_gasit.nr > 10)
+                if(ip_gasit.nr > 5)
                 {
                     res.render("pagini/status",{message:"Prea multe cereri într-un interval scurt. Vă rugăm să reveniți."});
                     ip_gasit.data = crTime;
@@ -573,6 +573,8 @@ server.get("/galerie",(req,res)=>{
         if(img.sfert_ora === parseInt(crMin/15))
             imgStatic.push(img);
     }
+
+    console.table(imgStatic);
 
     var randomLengthDynamic = 0;
 
@@ -1155,23 +1157,21 @@ server.post("/contulMeu-update",function(req,res){
 
             if(req.session.utilizator.email !== campuriText["email"])
             {
-                let queryUpdate = "UPDATE utilizatori SET email = $1, confirmat_mail = false WHERE id = $2";
-                client.query(queryUpdate,[campuriText["nume"],req.session.utilizator.id],function(err,rez){
+                console.log("schimba mail-ul te rog");
+                let queryUpdate = "UPDATE utilizatori SET email = $1 WHERE id = $2";
+                client.query(queryUpdate,[campuriText["email"],req.session.utilizator.id],function(err,rez){
                     if(err)
                     {
                         console.log(err);
                         renderStatusPage(res,2);
                         return;
                     }
-
+                    console.log(req.session);
                     sendMailConfirmCode(req.session.utilizator.username,campuriText["email"],tokenCod);
 
                 });
             }
 
-
-            req.session.destroy();
-            res.locals.utilizatorCr = null;
             res.render("pagini/status",{message:"Date cont modificate cu succes! Te rugăm să te reconectezi!"});
 
         });
